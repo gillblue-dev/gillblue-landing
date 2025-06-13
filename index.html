@@ -7,171 +7,190 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-dark: #0a2540;
+      --bg-light: #132d4d;
+      --accent: #38bdf8;
+      --text: #ffffff;
+      --text-muted: #cbd5e1;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f6fcff;
-      color: #222;
+      background: var(--bg-dark);
+      color: var(--text);
       line-height: 1.6;
     }
     header {
-      background-color: #0d3b66;
-      color: #fff;
-      text-align: center;
-      padding: 3rem 1rem;
+      background: var(--bg-dark);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    header img.logo {
+      width: 64px;
+      height: auto;
+      margin-bottom: 1rem;
     }
     header h1 {
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-    }
-    .container {
-      max-width: 900px;
-      margin: -2rem auto 2rem;
-      padding: 2rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-      padding: 2rem;
-      margin-bottom: 2rem;
-    }
-    h2, h3 {
-      color: #0d3b66;
-      margin-bottom: 1rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    li {
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
     }
+    header p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      text-align: center;
+    }
+    .section ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    .card {
+      background: var(--bg-light);
+      padding: 1.25rem;
+      border-radius: 10px;
+      transition: background 0.2s ease;
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: var(--accent);
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
     form {
+      background: var(--bg-light);
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      margin-top: 1rem;
     }
-    input, textarea, select, button {
-      padding: 0.75rem;
+    input, select, textarea {
       font-size: 1rem;
-      border: 1px solid #ccc;
+      padding: 0.75rem;
+      border: none;
       border-radius: 6px;
-    }
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: #0d3b66;
-      box-shadow: 0 0 0 2px rgba(13,59,102,0.2);
+      background: #fff;
+      color: #0a2540;
     }
     button {
-      background-color: #0d3b66;
-      color: #fff;
+      font-size: 1rem;
+      padding: 0.75rem;
+      background: var(--accent);
+      color: var(--bg-dark);
       border: none;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background 0.2s ease-in-out;
+      transition: background 0.3s ease;
     }
     button:hover {
-      background-color: #0b3055;
-    }
-    .value-block {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    .feature {
-      background: #f0f8ff;
-      border: 1px solid #dbeeff;
-      border-radius: 10px;
-      padding: 1.2rem;
-    }
-    .feature h4 {
-      margin-bottom: 0.5rem;
-      color: #0d3b66;
+      background: #0ea5e9;
     }
     footer {
       text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
       padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #777;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.svg" alt="GillBlue logo" style="height: 60px; margin-bottom: 1rem;">
+    <img src="logo.png" alt="GillBlue logo" class="logo">
     <h1>GillBlue</h1>
-    <p>Gestione semplice e intelligente del tuo allevamento ittico</p>
+    <p>Gestione moderna per allevamenti ittici. Niente più caos tra fogli e file sparsi.</p>
   </header>
 
-  <main class="container">
-    <section class="card">
-      <h2>🐟 Meno Excel. Più tempo per il tuo allevamento.</h2>
-      <p>Gestire un impianto ittico non dovrebbe sembrarti un lavoro da contabile. Ogni giorno prendi decisioni importanti: dosare il mangime, monitorare le vasche, registrare controlli. E spesso lo fai con strumenti pensati per tutto… tranne che per il campo.</p>
-      <p><strong>GillBlue</strong> nasce proprio da qui: semplificare la gestione quotidiana, con uno strumento rapido, intuitivo e fatto per chi lavora davvero in allevamento.</p>
-    </section>
-
-    <section class="card">
-      <h2>🧠 Ti suona familiare?</h2>
+  <div class="container">
+    <section class="section">
+      <h2>💬 I problemi di oggi</h2>
       <ul>
-        <li>Appunti scritti al volo… poi spariti.</li>
-        <li>File Excel con 27 colonne, aggiornato “quando riesco”.</li>
-        <li>Software che sembrano usciti dagli anni ‘90.</li>
-        <li>Anche solo un grammo di mangime in più fa la differenza. Ma per gestirlo meglio, serve qualcosa di semplice.</li>
+        <li>Excel complicati, aggiornati a fatica</li>
+        <li>Appunti persi o poco leggibili</li>
+        <li>Software vecchi e inutili sul campo</li>
       </ul>
     </section>
 
-    <section class="card">
-      <h2>✅ Con GillBlue potrai:</h2>
-      <div class="value-block">
-        <div class="feature">
-          <h4>✍️ Annota in pochi tap</h4>
-          <p>Mangimi, controlli, note: tutto rapido e senza errori.</p>
+    <section class="section">
+      <h2>✅ Cosa fa GillBlue</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>📲 Mobile</h3>
+          <p>Usa l’app ovunque, anche in vasca.</p>
         </div>
-        <div class="feature">
-          <h4>📱 Mobile first</h4>
-          <p>Funziona ovunque ti trovi, anche dal tuo cellulare.</p>
+        <div class="card">
+          <h3>🧾 Tutto in ordine</h3>
+          <p>Dati e note sempre accessibili.</p>
         </div>
-        <div class="feature">
-          <h4>❌ Meno confusione</h4>
-          <p>Riduci il caos, centralizza tutte le informazioni.</p>
-        </div>
-        <div class="feature">
-          <h4>⏱️ Risparmia tempo</h4>
-          <p>Snellisci il lavoro quotidiano. Più tempo per i pesci, meno per i fogli.</p>
+        <div class="card">
+          <h3>⏱️ Meno tempo perso</h3>
+          <p>Gestione più veloce e precisa.</p>
         </div>
       </div>
     </section>
 
-    <section class="card">
-      <h3>👇 Vuoi provarla appena è pronta?</h3>
-      <p>Stiamo costruendo GillBlue insieme ai primi allevatori interessati. Se anche tu vuoi una gestione più semplice, lasciaci i tuoi dati: ti contatteremo per fartela provare per primo.</p>
+    <section class="section">
+      <h2>🚀 Vuoi provarla?</h2>
+      <p style="text-align: center; color: var(--text-muted);">Lascia i tuoi dati e ti contatteremo appena disponibile.</p>
 
       <form action="https://formsubmit.co/team@gillblue.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://get.gillblue.com/thank-you.html">
+
         <input type="text" name="name" placeholder="Nome" required>
         <input type="email" name="email" placeholder="Email" required>
-        <select name="tool">
-          <option value="">Come gestisci oggi l’allevamento?</option>
+
+        <select name="tool" required>
+          <option value="">Strumento attuale</option>
           <option value="excel">Excel</option>
           <option value="paper">Carta</option>
           <option value="software">Software</option>
           <option value="other">Altro</option>
         </select>
-        <textarea name="painpoint" rows="3" placeholder="Cosa ti fa perdere più tempo?"></textarea>
-        <label><input type="checkbox" name="early-access"> Sì, voglio provarla appena disponibile</label>
-        <button type="submit">Tienimi aggiornato</button>
-      </form>
 
-      <p><strong>🔐 Nessuno spam. Nessun impegno.</strong><br>Se pensiamo che GillBlue possa davvero semplificarti il lavoro, ti scriveremo. Se no, grazie comunque per averci dedicato 30 secondi.</p>
-      <p>👋 A presto<br><em>Il team di GillBlue</em></p>
+        <textarea name="painpoint" rows="3" placeholder="Cosa ti fa perdere più tempo?"></textarea>
+
+        <label style="color: var(--text-muted);"><input type="checkbox" name="early-access"> Voglio provarla per primo</label>
+
+        <button type="submit">Invia</button>
+      </form>
     </section>
-  </main>
+  </div>
 
   <footer>
-    &copy; 2025 GillBlue. Tutti i diritti riservati.
+    &copy; 2025 GillBlue. Nessuno spam. Nessun impegno.
   </footer>
 </body>
 </html>
